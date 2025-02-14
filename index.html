@@ -1,0 +1,90 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Railway Wheel Flat Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .result {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .image-container {
+            margin: 10px;
+            text-align: center;
+            flex-basis: 48%;
+            box-sizing: border-box;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+        .details {
+            background: #e3f2fd;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .image-pair {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Railway Wheel Flat Analysis</h1>
+        <div class="result">
+            {% for result in results %}
+            <div class="image-container">
+                <!-- Image Name -->
+                <div class="image-name"><strong>{{ result.image_name }}</strong></div>
+
+                <!-- Display the Original Image and Heatmap Side by Side -->
+                <div class="image-pair">
+                    <div>
+                        <img src="{{ url_for('get_image', filename=result.image) }}" alt="Original Image">
+                        <div><strong>Original Image</strong></div>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('get_image', filename=result.heatmap) }}" alt="Heatmap">
+                        <div><strong>Heatmap</strong></div>
+                    </div>
+                </div>
+
+                <!-- Display Analysis Details -->
+                <div class="details">
+                    <strong>Flat Area:</strong> {{ result.flat_area_mm2 }} mm²<br>
+                    <strong>Severity:</strong> {{ result.severity }}<br>
+                    <strong>Impact:</strong> {{ result.impact_analysis }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
