@@ -1,0 +1,8 @@
+
+Pillow==8.4.0
+numpy==1.23.5
+tensorflow==2.11.0
+scikit-learn==1.2.1
+matplotlib==3.6.3
+tkinter==8.6.12  
+opencv-python==4.7.0.72
