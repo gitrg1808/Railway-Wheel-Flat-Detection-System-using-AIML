@@ -1,0 +1,5 @@
+{
+    "low_severity_threshold": 500,
+    "medium_severity_threshold": 1000,
+    "reference_max_area_mm2": 10000
+}
